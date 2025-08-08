@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Admin • Customers{% endblock %}
+
+{% block topbar %}
+<div class="topbar">
+  <div class="d-flex align-items-center gap-3">
+    <h4 class="mb-0">Customers</h4>
+    <span class="muted small">Manage customers • elegant admin panel</span>
+  </div>
+
+  <div class="control d-flex align-items-center">
+    <div class="card-glass small d-flex align-items-center gap-2 search-input">
+      <i class="bi bi-search"></i>
+      <input id="tableSearch" class="form-control form-control-sm border-0 bg-transparent" placeholder="Search customers..." />
+    </div>
+    <div class="ms-2 d-none d-md-block">
+      <button class="btn btn-sm" id="refreshBtn" title="Refresh list"><i class="bi bi-arrow-clockwise"></i></button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <!-- Your customer page stats, table, etc -->
+  <!-- Copy the inner HTML of your main section here (stats, table) -->
+  <div class="row g-3 stats">
+    <div class="col-12 col-md-4">
+      <div class="card-glass d-flex justify-content-between align-items-center">
+        <div>
+          <div class="small muted">Total Customers</div>
+          <div style="font-size:1.4rem;font-weight:700">{{ customers|length }}</div>
+        </div>
+        <i class="bi bi-people fs-2" style="color: #2b6cff"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-glass mt-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div>
+        <h6 class="mb-0">Customer List</h6>
+        <div class="small muted">Quick overview of your customers</div>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="overflow:auto; max-height: 60vh;">
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th style="width:56px">#</th>
+            <th style="min-width:180px">Name</th>
+            <th style="min-width:220px">Email</th>
+            <th style="min-width:140px">Phone</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody id="customerTableBody">
+          {% for customer in customers %}
+          <tr data-id="{{ customer.customer_id }}">
+            <td>{{ loop.index }}</td>
+            <td><div style="font-weight:600">{{ customer.name }}</div></td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.phone }}</td>
+            <td class="small muted">{{ customer.address if customer.address else '-' }}</td>
+          </tr>
+          {% else %}
+          <tr>
+            <td colspan="5" class="text-center muted small py-4">No customers found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('tableSearch');
+    if (searchInput) {
+      searchInput.addEventListener('input', function (e) {
+        const q = e.target.value.toLowerCase().trim();
+        const rows = document.querySelectorAll('#customerTableBody tr');
+        rows.forEach(r => {
+          if (!q) { r.style.display = ''; return; }
+          const text = r.innerText.toLowerCase();
+          r.style.display = text.includes(q) ? '' : 'none';
+        });
+      });
+    }
+  });
+</script>
+{% endblock %}
