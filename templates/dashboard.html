@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+  <!-- Dashboard Header -->
+  <div class="dashboard-header">
+    Welcome to Admin Dashboard
+  </div>
+
+  <!-- Dashboard Options -->
+  <div class="dashboard-options">
+    <a href="{{ url_for('products') }}" class="dash-btn">
+      <div class="icon">📦</div>
+      <div class="label">Products</div>
+    </a>
+
+    <a href="{{ url_for('customers') }}" class="dash-btn">
+      <div class="icon">👤</div>
+      <div class="label">Customers</div>
+    </a>
+
+    <a href="{{ url_for('orders') }}" class="dash-btn">
+      <div class="icon">📝</div>
+      <div class="label">Orders</div>
+    </a>
+
+    <a href="{{ url_for('settings') }}" class="dash-btn">
+      <div class="icon">⚙️</div>
+      <div class="label">Settings</div>
+    </a>
+  </div>
+
+</div>
+
+<!-- Link external stylesheet -->
+<link rel="stylesheet" href="static/css/dashboard.css">
+
+{% endblock %}

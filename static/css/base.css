@@ -1,0 +1,134 @@
+/* Reset */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f6f8;
+  color: #333;
+  font-size: 18px;
+}
+
+/* Sidebar (fixed) */
+aside.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #1f2937;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #4ade80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 22px;
+  margin-right: 18px;
+  color: #fff;
+}
+
+.who { font-weight: bold; font-size: 18px; }
+
+.side-links a {
+  display: block;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.side-links a:hover { 
+  background-color: #4ade80; 
+  color: #1f2937; 
+}
+
+.logout-btn {
+  margin-top: 25px;
+  padding: 12px;
+  background-color: #ef4444;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover { background-color: #b91c1c; }
+
+/* Main layout */
+.app {
+  margin-left: 250px;
+  flex: 1;
+  min-height: 100vh;
+}
+
+nav.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  right: 0;
+  height: 70px;
+  background-color: #1f2937;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 25px;
+  font-size: 22px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  z-index: 10;
+}
+
+main.main {
+  margin-top: 70px;
+  padding: 35px;
+  background-color: #f4f6f8;
+}
+
+main.main .content {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  aside.sidebar { width: 200px; }
+  .app { margin-left: 200px; }
+  nav.top-navbar { left: 200px; padding: 0 20px; }
+}
+
+@media (max-width: 576px) {
+  aside.sidebar { left: -250px; transition: left 0.3s; }
+  aside.sidebar.show { left: 0; }
+  .app { margin-left: 0; }
+  nav.top-navbar { left: 0; padding: 0 15px; }
+}

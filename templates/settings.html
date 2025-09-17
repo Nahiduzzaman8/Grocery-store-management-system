@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="settings-container">
+
+  <!-- Settings Header -->
+  <div class="settings-header">
+    Settings Panel
+  </div>
+
+  <!-- Settings Options -->
+  <div class="settings-options">
+    <a href="{{ url_for('oldpass') }}" class="setting-btn">
+      <div class="icon">🔒</div>
+      <div class="label">Change Password</div>
+    </a>
+
+    <a href="{{ url_for('option1') }}" class="setting-btn">
+      <div class="icon">🛠️</div>
+      <div class="label">Option 2</div>
+    </a>
+
+    <a href="{{ url_for('option1') }}" class="setting-btn">
+      <div class="icon">⚙️</div>
+      <div class="label">Option 3</div>
+    </a>
+
+    <a href="{{ url_for('option1') }}" class="setting-btn">
+      <div class="icon">📁</div>
+      <div class="label">Option 4</div>
+    </a>
+
+    <a href="{{ url_for('option1') }}" class="setting-btn">
+      <div class="icon">📊</div>
+      <div class="label">Option 5</div>
+    </a>
+  </div>
+
+</div>
+
+<!-- Link external CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+
+{% endblock %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="static/css/login.css">
+</head>
+<body>
+
+  <!-- Flash Messages -->
+  <div class="flash-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">
+            <span class="flash-icon"></span>
+            <span>{{ message }}</span>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <!-- Login Card -->
+  <div class="login-container">
+    <h1>Admin Login</h1>
+    <form action="{{ url_for('login') }}" method="POST">
+      <label for="username">Username</label>
+      <input id="username" type="text" name="username" placeholder="Enter your username" required>
+
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="Enter your password" required>
+
+      <button type="submit">Login</button>
+    </form>
+    <div class="footer">© {{ current_year if current_year else '' }} Grocery Admin</div>
+  </div>
+
+</body>
+</html>

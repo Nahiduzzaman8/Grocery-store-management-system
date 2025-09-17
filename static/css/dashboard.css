@@ -1,0 +1,94 @@
+.dashboard-container {
+  padding: 1.5rem; /* reduced padding */
+  min-height: 100%;
+  background: linear-gradient(145deg, #4ade80, #4ade80);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.dashboard-header {
+  font-size: 2rem; /* smaller header */
+  font-weight: 900;
+  color: #1e293b;
+  text-align: center;
+  margin-bottom: 2.5rem; /* reduced margin */
+  letter-spacing: 0.03em;
+  text-shadow: 1px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* Options grid */
+.dashboard-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Dashboard buttons */
+.dash-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem 1rem; /* reduced padding */
+  background: linear-gradient(145deg, rgba(255,255,255,0.4), rgba(255,255,255,0.2));
+  border-radius: 16px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.07), inset 0 0 6px rgba(255,255,255,0.2);
+  text-decoration: none;
+  color: #1e293b;
+  font-weight: 700;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Icon styling */
+.dash-btn .icon {
+  font-size: 2.2rem; /* smaller icon */
+  margin-bottom: 0.6rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Label styling */
+.dash-btn .label {
+  font-size: 1rem; /* smaller label */
+  transition: color 0.3s ease;
+}
+
+/* Hover effect */
+.dash-btn:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12), inset 0 0 10px rgba(255,255,255,0.3);
+  background: linear-gradient(145deg, rgba(255,255,255,0.7), rgba(255,255,255,0.35));
+  color: #2563eb;
+}
+
+.dash-btn:hover .icon {
+  transform: rotate(8deg) scale(1.12);
+  color: #2563eb;
+  text-shadow: 0 1px 4px rgba(37, 99, 235, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-options {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .dash-btn {
+    padding: 1.4rem 0.9rem;
+  }
+  .dash-btn .icon { font-size: 2rem; }
+  .dash-btn .label { font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  .dashboard-options {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .dash-btn {
+    padding: 1.2rem 0.8rem;
+  }
+  .dash-btn .icon { font-size: 1.8rem; }
+  .dash-btn .label { font-size: 0.9rem; }
+}

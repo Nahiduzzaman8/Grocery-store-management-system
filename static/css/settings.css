@@ -1,0 +1,77 @@
+.settings-container {
+  padding: 1.5rem;
+  min-height: 100%;
+  background: linear-gradient(145deg, #f0fdfa, #d1fae5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.settings-header {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #065f46;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 0.03em;
+  text-shadow: 1px 2px 3px rgba(0,0,0,0.05);
+}
+
+.settings-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.setting-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem 1rem;
+  background: linear-gradient(145deg, rgba(255,255,255,0.5), rgba(255,255,255,0.2));
+  border-radius: 16px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.07), inset 0 0 6px rgba(255,255,255,0.2);
+  text-decoration: none;
+  color: #065f46;
+  font-weight: 700;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.setting-btn .icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.6rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.setting-btn .label {
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.setting-btn:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12), inset 0 0 10px rgba(255,255,255,0.3);
+  background: linear-gradient(145deg, rgba(255,255,255,0.7), rgba(255,255,255,0.35));
+  color: #059669;
+}
+
+.setting-btn:hover .icon {
+  transform: rotate(8deg) scale(1.12);
+  color: #059669;
+  text-shadow: 0 1px 4px rgba(5, 150, 105, 0.4);
+}
+
+@media (max-width: 768px) {
+  .settings-options { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .setting-btn { padding: 1.4rem 0.9rem; }
+  .setting-btn .icon { font-size: 2rem; }
+  .setting-btn .label { font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  .settings-options { grid-template-columns: 1fr; gap: 0.8rem; }
+  .setting-btn { padding: 1.2rem 0.7rem; }
+  .setting-btn .icon { font-size: 1.8rem; }
+  .setting-btn .label { font-size: 0.9rem; }
+}

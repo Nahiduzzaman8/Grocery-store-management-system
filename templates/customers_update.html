@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="{{ url_for('update_customer', customer_id=customer.customer_id) }}" method="post" novalidate>
+
+  <label for="customer_name">Customer Name:</label>
+  <input type="text" id="customer_name" name="customer_name" value="{{ customer.customer_name }}" required placeholder="Enter customer name">
+
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email" value="{{ customer.email }}" required placeholder="Enter email">
+
+  <label for="contact">Contact:</label>
+  <input type="text" id="contact" name="contact" value="{{ customer.contact }}" required placeholder="Enter contact">
+
+  <label for="address">Address:</label>
+  <input type="text" id="address" name="address" value="{{ customer.address }}" required placeholder="Enter address">
+
+  <button type="submit">Update Customer</button>
+</form>
+
+<!-- Link external CSS --><link rel="stylesheet" href="{{ url_for('static', filename='css/customers_update.css') }}">
+
+{% endblock %}

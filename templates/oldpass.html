@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-container">
+
+  <h2 class="form-header">Verify Old Password</h2>
+
+  <!-- Flash Messages -->
+  <div class="flash-messages">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li class="flash {{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <form method="POST" action="{{ url_for('oldpass') }}" class="full-width-form">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username" required>
+    </div>
+
+    <div class="form-group">
+      <label for="old_password">Old Password</label>
+      <input type="password" id="old_password" name="old_password" placeholder="Enter your old password" required>
+    </div>
+
+    <button type="submit" class="submit-btn">Next</button>
+  </form>
+
+</div>
+
+<!-- Link external CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/old_pass.css') }}">
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="content">
+
+  <!-- Page Header -->
+  <div class="topbar">
+    Products List
+  </div>
+
+  <!-- Product Table -->
+  <div class="product-table-container">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Price per Unit</th>
+            <th>Unit</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+          <tr>
+            <td>{{ product.product_id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price_per_unit }}</td>
+            <td>{{ product.uom_name }}</td>
+            <td>
+              <a class="edit-btn" href="{{ url_for('update_product', product_id = product.product_id) }}">Edit</a>
+              <form method="POST" action="{{ url_for('delete_product', id=product.product_id) }}" style="display:inline;">
+                <button class="delete-btn" type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Flash Messages -->
+  <div class="flash-messages">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+
+</div>
+
+<!-- Floating Add Product Button (Bottom Right) -->
+<a href="{{ url_for('add_product') }}" class="floating-add-btn">+</a>
+
+<!-- Link external CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
+
+
+
+
+{% endblock %}

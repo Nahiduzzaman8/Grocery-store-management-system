@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="content">
+
+  <!-- Page Header -->
+  <div class="topbar">
+    Orders List
+  </div>
+
+  <!-- Flash Messages -->
+  <div class="flash-messages">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li class="flash {{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  
+  <!-- Orders Table -->
+  <div class="product-table-container">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer Name</th>
+            <th>Total</th>
+            <th>Date & Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+          <tr>
+            <td>{{ order.order_id }}</td>
+            <td>{{ order.customer_name }}</td>
+            <td>{{ order.total }}</td>
+            <td>{{ order.datetime }}</td>
+            <td>
+              <form method="POST" action="{{ url_for('delete_order', order_id=order.order_id) }}" style="display:inline;">
+                <button class="delete-btn" type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- Link external CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/orders.css') }}">
+
+<script src="{{ url_for('static', filename='js/orders.js') }}"></script>
+
+{% endblock %}

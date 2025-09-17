@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-container">
+
+  <h2 class="form-header">Set New Password</h2>
+
+  <!-- Flash Messages -->
+  <div class="flash-messages">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li class="flash {{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <form method="POST" action="{{ url_for('new_pass') }}" class="full-width-form">
+    <input type="hidden" name="user_id" value="{{ user_id }}">
+
+    <div class="form-group">
+      <label for="new_password">New Password</label>
+      <input type="password" id="new_password" name="new_password" placeholder="Enter new password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="confirm_password">Confirm New Password</label>
+      <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm new password" required>
+    </div>
+
+    <button type="submit" class="submit-btn">Update Password</button>
+  </form>
+
+</div>
+
+<!-- Link external CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/new_password.css') }}">
+
+{% endblock %}

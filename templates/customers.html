@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="content">
+
+  <!-- Page Header -->
+  <div class="topbar">
+    Customers List
+  </div>
+
+  <!-- Flash Messages -->
+  <div class="flash-messages">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li class="flash {{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <!-- Customers Table -->
+  <div class="product-table-container">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for customer in customers %}
+          <tr>
+            <td>{{ customer.customer_id }}</td>
+            <td>{{ customer.customer_name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.contact }}</td>
+            <td>{{ customer.address }}</td>
+            <td>
+              <a class="edit-btn" href="{{ url_for('update_customer', customer_id=customer.customer_id) }}">Edit</a>
+              <form method="POST" action="{{ url_for('delete_customer', customer_id=customer.customer_id) }}" style="display:inline;">
+                <button class="delete-btn" type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- Link external CSS -->
+<link rel="stylesheet" href="static/css/customers.css">
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="{{ url_for('update_product', product_id=product['product_id']) }}" method="post" novalidate>
+
+  <label for="product_name">Product Name:</label>
+  <input type="text" id="product_name" name="product_name" value="{{product['name']}}" required placeholder="Enter product name">
+
+  <label for="price_per_unit">Price per Unit:</label>
+  <input type="text" id="price_per_unit" name="price_per_unit" value="{{product['price_per_unit']}}" required placeholder="Enter price per unit">
+
+  <label for="uom_name">Unit of Measure:</label>
+  <select id="uom_name" name="uom_name" required>
+    <option value="" disabled selected>Choose unit</option>
+    {% for uom in uom_names %}
+      <option value="{{ uom }}">{{ uom }}</option>
+    {% endfor %}
+  </select>
+
+  <button type="submit">Edit Product</button>
+</form>
+
+<!-- Link external CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/product_update.css') }}">
+
+
+
+{% endblock %}
